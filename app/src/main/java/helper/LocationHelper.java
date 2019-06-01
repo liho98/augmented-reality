@@ -29,11 +29,9 @@ public class LocationHelper {
     private Activity activity;
 
     public LocationHelper(Activity activity) {
-
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(activity);
         this.activity = activity;
         this.hasLocation = false;
-
     }
 
     /**
@@ -89,8 +87,6 @@ public class LocationHelper {
                         }
                     });
         }
-
-
     }
 
     public void onCreate() {
@@ -111,8 +107,6 @@ public class LocationHelper {
                     setHasLocation(true);
                 }
             }
-
-            ;
         };
     }
 
