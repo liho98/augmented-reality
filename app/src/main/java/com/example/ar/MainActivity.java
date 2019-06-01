@@ -23,7 +23,6 @@ import com.google.ar.sceneform.math.Quaternion;
 import com.google.ar.sceneform.math.Vector3;
 import com.google.ar.sceneform.rendering.ModelRenderable;
 import com.google.ar.sceneform.rendering.ViewRenderable;
-import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.sceneform.ux.TransformableNode;
 
 import java.util.Iterator;
@@ -36,7 +35,7 @@ import helper.SensorHelper;
 public class MainActivity extends AppCompatActivity {
 
     //AR
-    private ArFragment arFragment;
+    private CustomArFragment arFragment;
     private Session session;
     private Frame frame;
     private Anchor anchor;
@@ -60,31 +59,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        arFragment = (CustomArFragment) getSupportFragmentManager().findFragmentById(R.id.fragment);
 
         sensorHelper = new SensorHelper(this);
-
         locationHelper = new LocationHelper(this);
         locationHelper.onCreate();
-
         mathHelper = new MathHelper();
 
-        arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.sceneform_arfragment);
         hidePlaneInstructionView();
+    }
 
-        if(arFragment.getArSceneView().getSession() != null){
-            node = new Node();
-            node.setParent(arFragment.getArSceneView().getScene());
-            node.setWorldPosition(new Vector3(0f, 0f, -2f));
-
-            ViewRenderable.builder()
-                    .setView(this, R.layout.card)
-                    .build()
-                    .thenAccept(renderable -> viewRenderable = renderable);
-
-            node.setRenderable(viewRenderable);
-        }
-
+    @Override
+    protected void onStart() {
+        super.onStart();
         arFragment.getArSceneView().getScene().addOnUpdateListener(this::onSceneUpdate);
+
     }
 
     @Override
@@ -93,9 +82,6 @@ public class MainActivity extends AppCompatActivity {
 
         sensorHelper.onResume();
         locationHelper.onResume();
-
-
-
     }
 
     @Override
@@ -104,7 +90,6 @@ public class MainActivity extends AppCompatActivity {
 
         sensorHelper.onPause();
         locationHelper.onPause();
-
     }
 
     private void onSceneUpdate(FrameTime frameTime) {

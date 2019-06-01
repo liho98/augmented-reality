@@ -7,8 +7,8 @@
     tools:context=".MainActivity">
 
     <fragment
-        android:id="@+id/sceneform_arfragment"
-        android:name="com.google.ar.sceneform.ux.ArFragment"
+        android:id="@+id/fragment"
+        android:name="com.example.ar.CustomArFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
