@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">AR</string>
+    <string name="status_messages_appear_here_at_runtime">Status messages appear here at runtime.</string>
+</resources>

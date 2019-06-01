@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <fragment
+        android:id="@+id/sceneform_arfragment"
+        android:name="com.google.ar.sceneform.ux.ArFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Layout is set to `horizontal` at runtime whenever display orientation is landscape. -->
+    <LinearLayout
+        android:id="@+id/image_text_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#80000000"
+       >
+
+    <TextView
+        android:id="@+id/text_view_liho"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:padding="5dp"
+        android:text="@string/status_messages_appear_here_at_runtime"
+        android:textColor="#ffffff" />
+
+    <TextView
+        android:id="@+id/text_view_liho2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="351dp"
+        android:layout_marginBottom="20dp"
+        android:padding="5dp"
+        android:text="hello"
+        android:textColor="#ffffff" />
+
+    </LinearLayout>
+
+</RelativeLayout>
